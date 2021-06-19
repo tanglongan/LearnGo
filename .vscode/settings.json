@@ -1,0 +1,5 @@
+{
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.automationShell.windows": "",
+    "prettier.tabWidth": 4
+}
