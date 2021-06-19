@@ -2,28 +2,43 @@ package main
 
 import "fmt"
 
-type Sayer interface {
-	say()
+/*
+ * 同一个结构体可以实现多个接口
+ * 接口还可以嵌套组合
+ *
+ *
+ */
+type animal interface {
+	mover
+	eater
 }
 
-type dog struct {
+type mover interface {
+	move()
+}
+
+type eater interface {
+	eat(string)
 }
 
 type cat struct {
+	name string
+	feet int8
 }
 
-func (d dog) say() {
-	fmt.Println("汪汪汪")
+//cat实现了mover接口
+func (c *cat) move() {
+	fmt.Println("走猫步.....")
 }
 
-func (c cat) say() {
-	fmt.Println("喵喵喵")
+//cat实现了eater接口
+func (c *cat) eat(food string) {
+	fmt.Printf("猫吃%s", food)
 }
 
 func main() {
-	d := &dog{}
-	d.say()
+	c := cat{name: "蓝猫", feet: 4}
+	c.move()
+	c.eat("小黄鱼")
 
-	c := &cat{}
-	c.say()
 }
